@@ -4,7 +4,15 @@
 
 img {
   max-width: 300px;
-  max-height: 400px;
+  max-height: 250px;
+}
+.product{
+  display:flex;
+
+}
+.product-info{
+  background:#D34736;
+  padding: 0 10px 0 10px;
 }
 
 .App-header {
