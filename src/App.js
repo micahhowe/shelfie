@@ -20,9 +20,10 @@ class App extends Component {
   this.addProduct = this.addProduct.bind(this)
 
 }
+//We will need to bind this to an event soon
 addProduct(body) {
   axios.post('/api/product', body).then(res => {
-    //this.setState({memeArray: res.data})
+    this.setState({inventoryList: res.data})
     console.log('testing')
   })
 }
@@ -39,7 +40,7 @@ componentDidMount() {
       return (
         <div className="App">
         <Dashboard inventoryList={this.state.inventoryList}/>
-        <Form />
+        <Form addProduct={this.addProduct} />
         <Header />
         </div>
       );
