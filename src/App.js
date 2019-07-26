@@ -18,13 +18,20 @@ class App extends Component {
         
   }
   this.addProduct = this.addProduct.bind(this)
-
+  this.deleteProduct = this.deleteProduct.bind(this)
 }
 //We will need to bind this to an event soon
 addProduct(body) {
   axios.post('/api/product', body).then(res => {
     this.setState({inventoryList: res.data})
     console.log('testing')
+  })
+}
+deleteProduct(id) {
+  axios.delete(`/api/product/${id}`).then(res => {
+    this.setState({inventoryList: res.data})
+  }).catch(function() {
+    console.log('Awww Jeez Rick ... could not delete product');
   })
 }
 componentDidMount() {
@@ -39,9 +46,12 @@ componentDidMount() {
   render(){
       return (
         <div className="App">
-        <Dashboard inventoryList={this.state.inventoryList}/>
-        <Form addProduct={this.addProduct} />
         <Header />
+        <Dashboard 
+          inventoryList={this.state.inventoryList}
+          deleteProduct={this.deleteProduct} 
+          />
+        <Form addProduct={this.addProduct} />
         </div>
       );
     }
