@@ -5,7 +5,6 @@ const app = express()
 const ctrl = require('./controller')
 const {SERVER_PORT, CONNECTION_STRING} = process.env
 
-//inspect this when massive comes into play
 massive(CONNECTION_STRING).then(dbInstance => {
     app.set('db', dbInstance);
 }).catch(err => console.log(err))
