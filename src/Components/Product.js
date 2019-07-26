@@ -4,7 +4,13 @@ export default class Product extends Component {
     render (){
         return (
         <div className="product">
-         <h3>Product</h3>
+             <div className="img">
+                <img src={this.props.image} alt="Fancy Shoes" />
+            </div>
+            <div className="product-info">
+                <h2>{this.props.name}</h2>
+                <p>{this.props.price}</p>
+            </div>
         </div>
       )
     }

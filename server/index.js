@@ -9,6 +9,9 @@ massive(CONNECTION_STRING).then(dbInstance => {
     app.set('db', dbInstance);
 }).catch(err => console.log(err))
 
+app.get('/api/inventory', ctrl.getProducts)
+
+
 app.use(express.json())
 
 app.listen(SERVER_PORT, () => 

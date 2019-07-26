@@ -7,6 +7,9 @@ export default class Dashboard extends Component {
         <div className="dashboard">
         {this.props.inventoryList.map(el => (
             <Product
+            name={el.name}
+            image={el.image}
+            price={el.price}
             //I need to pass down everything that might need to be used by the meme component
     
             />
