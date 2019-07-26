@@ -5,15 +5,16 @@ const app = express()
 const ctrl = require('./controller')
 const {SERVER_PORT, CONNECTION_STRING} = process.env
 
-massive(CONNECTION_STRING).then(dbInstance => {
-    app.set('db', dbInstance);
-}).catch(err => console.log(err))
+app.use(express.json())
 
 app.get('/api/inventory', ctrl.getProducts)
 
+app.post('/api/product', ctrl.addProduct)
 
-app.use(express.json())
+massive(CONNECTION_STRING).then(dbInstance => {
+    app.set('db', dbInstance);
+    app.listen(SERVER_PORT, () => 
+    console.log(`Countdown has begun: ${SERVER_PORT} `)
+    )
+}).catch(err => console.log(err))
 
-app.listen(SERVER_PORT, () => 
-console.log(`Countdown has begun: ${SERVER_PORT} `)
-)

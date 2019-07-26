@@ -17,6 +17,14 @@ class App extends Component {
         inventoryList: []
         
   }
+  this.addProduct = this.addProduct.bind(this)
+
+}
+addProduct(body) {
+  axios.post('/api/product', body).then(res => {
+    //this.setState({memeArray: res.data})
+    console.log('testing')
+  })
 }
 componentDidMount() {
   axios.get('/api/inventory').then(res => {
