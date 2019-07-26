@@ -5,22 +5,33 @@ export default class Form extends Component {
         super(props)
             
         this.state = {
-            inputValue1: ' ',
-            inputValue2: ' ',
-            inputValue3: ' '
+            imgUrl: '',
+            productName: '',
+            price: ''
           }
         }
-    handleChange(e) {
-        this.setState({ inputValue1: e.target.value })
-        //console.log(e.target.value) // I was using this to showcase the onchange 
+    handleImgChange(e) {
+        this.setState({ imgUrl: e.target.value })
+        //console.log(e.target.value)
+    }
+    handleNameChange(e) {
+        this.setState({ product: e.target.value })
+        console.log(e.target.value)
+    }
+    handlePriceChange(e) {
+        this.setState({ price: e.target.value })
+        console.log(e.target.value)
     }
     
     render (){
+        
         return (
         <div className="form">
-                         <input onChange={e => this.handleChange(e)} type='text' />
-                         <input onChange={e => this.handleChange(e)} type='text' />
-                         <input onChange={e => this.handleChange(e)} type='text' />
+                         <input onChange={e => this.handleImgChange(e)} type='text' placeholder="IMG" />
+                         <input onChange={e => this.handleNameChange(e)} type='text' placeholder="Product Name"/>
+                         <input onChange={e => this.handlePriceChange(e)} type='text' placeholder="Price"/>
+                         <button>Cancel</button>
+                         <button>Add to Inventory</button>
         </div>
       )
     }
